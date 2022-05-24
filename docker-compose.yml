@@ -1,6 +1,7 @@
 version: "2"
 services:
   server90:
-    build: systems/fedora-basic
+    build: systems/alpine-podman
     privileged: true
-    tty: true
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
