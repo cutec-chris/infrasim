@@ -1,6 +1,6 @@
 version: "2"
 services:
   server90:
-    build: systems/alpine-basic
+    build: systems/fedora-basic
     privileged: true
     tty: true

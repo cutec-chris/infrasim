@@ -1,0 +1,3 @@
+[submodule "systems/fedora-basic"]
+	path = systems/fedora-basic
+	url = https://github.com/marun/dkr-systemd-dind
