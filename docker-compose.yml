@@ -1,7 +1,36 @@
-version: "2"
+version: "3.4"
 services:
   server90:
     build: systems/alpine-podman
     privileged: true
     stdin_open: true # docker run -i
     tty: true        # docker run -t
+    volumes:
+      - ./authorized_keys:/root/.ssh/authorized_keys
+    networks:
+      internal:
+        ipv4_address: 10.0.0.90
+      internet: {}
+  client:
+    build: systems/alpine-podman
+    privileged: true
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    volumes:
+      - ./authorized_keys:/root/.ssh/authorized_keys
+    networks:
+      - internal
+      - internet
+networks:
+    internal:
+        driver: "bridge"
+        driver_opts:
+          com.docker.network.bridge.enable_ip_masquerade: 'false'
+        ipam:
+            config:
+                - subnet: 10.0.0.1/24
+    internet:
+        driver: "bridge"
+        ipam:
+            config:
+                - subnet: 88.12.96.1/24

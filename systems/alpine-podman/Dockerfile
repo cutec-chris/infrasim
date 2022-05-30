@@ -5,6 +5,9 @@ run apk add\
     py3-pip\
     bash\
     git\
+    bash\
+    bash-completion\
+    rsync\
     openssh\
     openssh-server-pam\
     linux-pam
